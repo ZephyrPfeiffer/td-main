@@ -4,14 +4,21 @@ import Form from './Form';
 import ThankYou from './ThankYou';
 
 
-function MainContainer() {
+function MainContainer({isComplete}) {
+
+  let currentDisplay;
+
+  if(isComplete) {
+    currentDisplay = <ThankYou />
+  }else {
+    currentDisplay = <Form />
+  }
 
   return (
 
     <main class="main-container">
       <CardSection />
-      <Form />
-      <ThankYou />
+      {currentDisplay}
     </main>
 
   )
