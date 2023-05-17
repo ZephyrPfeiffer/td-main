@@ -2,13 +2,13 @@ import CardFront from './CardFront'
 import CardBack from './CardBack'
 import './CardSection.css'
 
-function CardSection() {
+function CardSection({formInfo}) {
 
   return(
 
     <section className="card-container">
-      <CardFront />
-      <CardBack />
+      <CardFront formInfo={formInfo}/>
+      <CardBack formInfo={formInfo} />
     </section>
 
   )

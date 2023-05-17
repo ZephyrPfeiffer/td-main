@@ -1,12 +1,12 @@
 import './CardBack.css'
 
-function CardBack() {
+function CardBack({formInfo}) {
 
   return (
 
     <section className="back-container">
 
-      <span className="cvc-info">CVC</span>
+      <span className="cvc-info">{formInfo.cvc}</span>
 
     </section>
 

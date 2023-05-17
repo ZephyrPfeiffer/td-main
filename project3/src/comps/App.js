@@ -9,21 +9,27 @@ function App() {
 
   const initialFormState = {
 
-    name: '',
-    cardNumber: null,
-    monthExpiration: null,
-    yearExpiration: null,
-    cvc: null,
+    name: 'Jane Appleseed',
+    cardNumber: '0000000000',
+    monthExpiration: '00',
+    yearExpiration: '00',
+    cvc: '000',
 
   };
 
   const [isComplete, setIsComplete] = useState(false);
   const [formInfo, setFormInfo] = useState(initialFormState)
 
+  function updateInfo(propertyName, value) {
+
+    setFormInfo({...formInfo, [propertyName]: value})
+
+  }
+
   return (
     <div className="App">
       <Nav />
-      <MainContainer isComplete={isComplete}/>
+      <MainContainer formInfo={formInfo} isComplete={isComplete} updateInfo={updateInfo}/>
       <Footer />
     </div>
   );
