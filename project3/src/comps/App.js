@@ -7,7 +7,18 @@ import { useState } from 'react'
 
 function App() {
 
+  const initialFormState = {
+
+    name: '',
+    cardNumber: null,
+    monthExpiration: null,
+    yearExpiration: null,
+    cvc: null,
+
+  };
+
   const [isComplete, setIsComplete] = useState(false);
+  const [formInfo, setFormInfo] = useState(initialFormState)
 
   return (
     <div className="App">

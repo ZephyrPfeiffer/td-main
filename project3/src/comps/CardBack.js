@@ -4,9 +4,9 @@ function CardBack() {
 
   return (
 
-    <section class="back-container">
+    <section className="back-container">
 
-      <span class="cvc-info">CVC</span>
+      <span className="cvc-info">CVC</span>
 
     </section>
 

@@ -6,7 +6,7 @@ function CardSection() {
 
   return(
 
-    <section class="card-container">
+    <section className="card-container">
       <CardFront />
       <CardBack />
     </section>

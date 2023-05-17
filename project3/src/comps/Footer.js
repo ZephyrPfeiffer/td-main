@@ -4,7 +4,7 @@ function Footer() {
 
   return (
 
-    <footer class="footer-container">
+    <footer className="footer-container">
 
       <span>Start Date: </span>
       <span>End Date: </span>

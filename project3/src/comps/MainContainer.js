@@ -16,7 +16,7 @@ function MainContainer({isComplete}) {
 
   return (
 
-    <main class="main-container">
+    <main className="main-container">
       <CardSection />
       {currentDisplay}
     </main>
