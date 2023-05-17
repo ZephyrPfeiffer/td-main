@@ -1,5 +1,7 @@
 import CardSection from './CardSection';
-import './MainContainer.css'
+import Form from './Form';
+import './MainContainer.css';
+
 
 function MainContainer() {
 
@@ -7,6 +9,7 @@ function MainContainer() {
 
     <main class="main-container">
       <CardSection />
+      <Form />
     </main>
 
   )

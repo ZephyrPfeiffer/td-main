@@ -1,0 +1,66 @@
+.form-container {
+
+  width: 100%;
+  padding: 0 1.7rem;
+
+}
+
+.card-form {
+
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: .5rem;
+
+}
+
+.date-container,
+.cvc-container {
+
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: .3rem;
+
+}
+
+.date-container {
+
+  column-gap: .5rem;
+
+}
+
+input {
+
+  width: 100%;
+  border-radius: 10px;
+  height: 38px;
+
+}
+
+p {
+
+  width: 100%;
+
+}
+
+.date-container input {
+
+  width: 40%;
+
+}
+
+.submit-button {
+
+  width: 100%;
+  height: 50px;
+  margin-top: 1rem;
+  border-radius: 10px;
+
+}
+
+/* .cvc-label,
+.expiration-label {
+
+  width: 40%;
+
+} */
