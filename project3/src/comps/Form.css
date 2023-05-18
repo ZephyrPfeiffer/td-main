@@ -1,6 +1,7 @@
 .form-container {
 
   width: 100%;
+  position: relative;
   margin-top: 2rem;
   padding: 0 1.7rem;
 
@@ -65,3 +66,32 @@ p {
   width: 40%;
 
 } */
+
+@media (min-width: 376px) {
+
+  .form-container {
+
+    width: 60%;
+    height: 100vh;
+
+
+  }
+
+  .card-form {
+
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 19%;
+    right: 17%;
+    align-items: flex-end;
+
+  }
+
+  label {
+
+    display: inline-block;
+
+  }
+
+}

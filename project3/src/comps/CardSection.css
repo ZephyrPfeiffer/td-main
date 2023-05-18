@@ -6,3 +6,15 @@
   background: url('../../public/images/bg-main-mobile.png') no-repeat;
 
 }
+
+@media (min-width: 376px) {
+
+  .card-container {
+
+    width: 40%;
+    height: 100vh;
+    background-size: cover;
+
+  }
+
+}

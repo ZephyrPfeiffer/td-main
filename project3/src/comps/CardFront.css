@@ -11,8 +11,6 @@
 
 }
 
-
-
 .card-number {
 
   display: block;
@@ -24,5 +22,19 @@
 
   display: flex;
   justify-content: space-between;
+
+}
+
+@media (min-width: 376px) {
+
+  .front-container {
+
+    width: 60%;
+    height: 28%;
+    top: 20%;
+    left: 55%;
+    background-size: cover;
+
+  }
 
 }

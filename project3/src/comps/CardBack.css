@@ -20,3 +20,18 @@
   right: 13%;
 
 }
+
+@media (min-width: 376px) {
+
+  .back-container {
+
+    width: 60%;
+    height: 28%;
+    top: 53%;
+    right: 0%;
+    left: 70%;
+    background-size: contain;
+
+  }
+
+}
