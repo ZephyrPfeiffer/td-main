@@ -1,38 +1,137 @@
 import './Form.css';
+import { useState } from 'react'
 import Input from 'react-input-auto-format';
 
+let nameErrorMessage;
+let cardNumberErrorMessage;
+let dateErrorMessage;
+let cvcErrorMessage;
 
-function Form({isComplete, updateCompleteStatus, updateInfo, validateForm, validationInfo}) {
+let errorMessages = {
 
-  let errorMessages = {
+  isEmptyError: 'Can\'t be blank',
+  hasLetterError: 'Wrong format, numbers only',
 
-    isEmptyError: 'Can\'t be blank',
-    hasLetterError: 'Wrong format, numbers only',
+}
+
+const initialValidationState = {
+
+  nameEmpty: false,
+  cardNumberEmpty: false,
+  cardNumberLetters: false,
+  monthEmpty: false,
+  monthLetters: false,
+  yearEmpty: false,
+  yearLetters: false,
+  cvcEmpty: false,
+  cvcLetters: false,
+
+}
+
+function Form({formInfo, updateInfo, isComplete, updateCompleteStatus}) {
+
+  // let nameErrorMessage;
+  // let cardNumberErrorMessage;
+  // let dateErrorMessage;
+  // let cvcErrorMessage;
+
+  // let errorMessages = {
+
+  //   isEmptyError: 'Can\'t be blank',
+  //   hasLetterError: 'Wrong format, numbers only',
+
+  // }
+
+  // const initialValidationState = {
+
+  //   nameEmpty: false,
+  //   cardNumberEmpty: false,
+  //   cardNumberLetters: false,
+  //   monthEmpty: false,
+  //   monthLetters: false,
+  //   yearEmpty: false,
+  //   yearLetters: false,
+  //   cvcEmpty: false,
+  //   cvcLetters: false,
+
+  // }
+
+  const [validationInfo, setValidationInfo] = useState(initialValidationState);
+
+  function validateForm() {
+
+    // validate if any form input is empty
+    setValidationInfo({...validationInfo, nameEmpty: isEmpty(formInfo.name)})
+    setValidationInfo({...validationInfo, cardNumberEmpty: isEmpty(formInfo.cardNumber)})
+    setValidationInfo({...validationInfo, monthEmpty: isEmpty(formInfo.monthExpiration)})
+    setValidationInfo({...validationInfo, yearEmpty: isEmpty(formInfo.yearExpiration)})
+    setValidationInfo({...validationInfo, cvcEmpty: isEmpty(formInfo.cvc)})
+
+    // validate if certain inputs have letters in them
+    setValidationInfo({...validationInfo, cardNumberLetters: hasLetters(formInfo.cardNumber)})
+    setValidationInfo({...validationInfo, monthLetters: hasLetters(formInfo.monthExpiration)})
+    setValidationInfo({...validationInfo, yearLetters: hasLetters(formInfo.yearExpiration)})
+    setValidationInfo({...validationInfo, cvcLetters: hasLetters(formInfo.cvc)})
+
+    // console.log(isEmpty(formInfo.name))
+    // console.log(validationInfo.nameEmpty)
+
+    return;
+      
+  }
+
+  function isEmpty(value) {
+
+    let invalid = false;
+
+    if(value.length <= 0) {
+
+      invalid = true;
+
+    }
+
+    return invalid;
 
   }
 
-  let nameErrorMessage;
-  let cardNumberErrorMessage;
-  let dateErrorMessage;
-  let cvcErrorMessage;
+  function hasLetters(value) {
 
-  async function formSubmit(event) {
+    let invalid = false;
+    let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-    event.preventDefault()
-    await validateForm()
-    console.log(validationInfo)
+    for(let i = 0; i < value.length; i++) {
 
-    for(let property in validationInfo) {
+      if(numbers.indexOf(value[i]) === -1) {
 
-      if(validationInfo[property]) {
-        updateCompleteStatus(false)
+        invalid = true;
         break;
+
       }
 
     }
 
-    if(!isComplete) {
-      if(validationInfo.nameEmpty) {
+    return invalid;
+
+  }
+
+  function formSubmit(event) {
+
+    let formComplete = true;
+
+    event.preventDefault()
+    validateForm()
+
+    for(let property in validationInfo) {
+
+      if(validationInfo[property]) {
+        formComplete = false;
+      }
+
+    }
+
+    if(!formComplete) {
+
+      if(validationInfo.emptyName) {
 
         nameErrorMessage = <p>{errorMessages.isEmptyError}</p>
 
@@ -84,7 +183,12 @@ function Form({isComplete, updateCompleteStatus, updateInfo, validateForm, valid
 
       }
 
+    }else {
+
+      updateCompleteStatus(true)
+
     }
+
 
   }
 

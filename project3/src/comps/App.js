@@ -5,35 +5,35 @@ import Footer from './Footer';
 
 import { useState } from 'react'
 
+const initialFormState = {
+
+  name: '',
+  cardNumber: '',
+  monthExpiration: '',
+  yearExpiration: '',
+  cvc: '',
+
+};
+
 function App() {
 
-  const initialFormState = {
+  // const initialValidationState = {
 
-    name: '',
-    cardNumber: '',
-    monthExpiration: '',
-    yearExpiration: '',
-    cvc: '',
+  //   nameEmpty: false,
+  //   cardNumberEmpty: false,
+  //   cardNumberLetters: false,
+  //   monthEmpty: false,
+  //   monthLetters: false,
+  //   yearEmpty: false,
+  //   yearLetters: false,
+  //   cvcEmpty: false,
+  //   cvcLetters: false,
 
-  };
-
-  const initialValidationState = {
-
-    nameEmpty: false,
-    cardNumberEmpty: false,
-    cardNumberLetters: false,
-    monthEmpty: false,
-    monthLetters: false,
-    yearEmpty: false,
-    yearLetters: false,
-    cvcEmpty: false,
-    cvcLetters: false,
-
-  }
+  // }
 
   const [isComplete, setIsComplete] = useState(false);
   const [formInfo, setFormInfo] = useState(initialFormState);
-  const [validationInfo, setValidationInfo] = useState(initialValidationState);
+  // const [validationInfo, setValidationInfo] = useState(initialValidationState);
 
   function updateInfo(propertyName, value) {
 
@@ -47,66 +47,66 @@ function App() {
 
   }
 
-  async function validateForm() {
+  // function validateForm() {
 
-    // validate if any form input is empty
-    setValidationInfo({...validationInfo, nameEmpty: isEmpty(formInfo.name)})
-    setValidationInfo({...validationInfo, cardNumberEmpty: isEmpty(formInfo.cardNumber)})
-    setValidationInfo({...validationInfo, monthEmpty: isEmpty(formInfo.monthExpiration)})
-    setValidationInfo({...validationInfo, yearEmpty: isEmpty(formInfo.yearExpiration)})
-    setValidationInfo({...validationInfo, cvcEmpty: isEmpty(formInfo.cvc)})
+  //   // validate if any form input is empty
+  //   setValidationInfo({...validationInfo, nameEmpty: isEmpty(formInfo.name)})
+  //   setValidationInfo({...validationInfo, cardNumberEmpty: isEmpty(formInfo.cardNumber)})
+  //   setValidationInfo({...validationInfo, monthEmpty: isEmpty(formInfo.monthExpiration)})
+  //   setValidationInfo({...validationInfo, yearEmpty: isEmpty(formInfo.yearExpiration)})
+  //   setValidationInfo({...validationInfo, cvcEmpty: isEmpty(formInfo.cvc)})
 
-    // validate if certain inputs have letters in them
-    setValidationInfo({...validationInfo, cardNumberLetters: hasLetters(formInfo.cardNumber)})
-    setValidationInfo({...validationInfo, monthLetters: hasLetters(formInfo.monthExpiration)})
-    setValidationInfo({...validationInfo, yearLetters: hasLetters(formInfo.yearExpiration)})
-    setValidationInfo({...validationInfo, cvcLetters: hasLetters(formInfo.cvc)})
+  //   // validate if certain inputs have letters in them
+  //   setValidationInfo({...validationInfo, cardNumberLetters: hasLetters(formInfo.cardNumber)})
+  //   setValidationInfo({...validationInfo, monthLetters: hasLetters(formInfo.monthExpiration)})
+  //   setValidationInfo({...validationInfo, yearLetters: hasLetters(formInfo.yearExpiration)})
+  //   setValidationInfo({...validationInfo, cvcLetters: hasLetters(formInfo.cvc)})
 
-    // console.log(isEmpty(formInfo.name))
-    // console.log(validationInfo.nameEmpty)
+  //   // console.log(isEmpty(formInfo.name))
+  //   // console.log(validationInfo.nameEmpty)
 
-    return;
+  //   return;
       
-  }
+  // }
 
-  function isEmpty(value) {
+  // function isEmpty(value) {
 
-    let invalid = false;
+  //   let invalid = false;
 
-    if(value.length <= 0) {
+  //   if(value.length <= 0) {
 
-      invalid = true;
+  //     invalid = true;
 
-    }
+  //   }
 
-    return invalid;
+  //   return invalid;
 
-  }
+  // }
 
-  function hasLetters(value) {
+  // function hasLetters(value) {
 
-    let invalid = false;
-    let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+  //   let invalid = false;
+  //   let numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
-    for(let i = 0; i < value.length; i++) {
+  //   for(let i = 0; i < value.length; i++) {
 
-      if(numbers.indexOf(value[i]) === -1) {
+  //     if(numbers.indexOf(value[i]) === -1) {
 
-        invalid = true;
-        break;
+  //       invalid = true;
+  //       break;
 
-      }
+  //     }
 
-    }
+  //   }
 
-    return invalid;
+  //   return invalid;
 
-  }
+  // }
 
   return (
     <div className="App">
       <Nav />
-      <MainContainer formInfo={formInfo} isComplete={isComplete} updateCompleteStatus={updateCompleteStatus} updateInfo={updateInfo}  validateForm={validateForm} validationInfo={validationInfo} />
+      <MainContainer formInfo={formInfo} isComplete={isComplete} updateCompleteStatus={updateCompleteStatus} updateInfo={updateInfo} />
       <Footer />
     </div>
   );
