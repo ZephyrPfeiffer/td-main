@@ -199,7 +199,7 @@ function Form({formInfo, updateInfo, isComplete, updateCompleteStatus}) {
       <form className="card-form">
 
         <label>CARD HOLDER NAME</label>
-        <input name="name" type="text" maxLength="25" placeholder="e.g. Jane Appleseed" onChange={(e) => {
+        <input class="name" name="name" type="text" maxLength="25" placeholder="e.g. Jane Appleseed" onChange={(e) => {
           
           updateInfo(e.target.name, e.target.value)
         
@@ -212,25 +212,23 @@ function Form({formInfo, updateInfo, isComplete, updateCompleteStatus}) {
         
         }}/>
         {cardNumberErrorMessage}
-        <div className="date-container">
+        <div className="date-cvc-container">
           <label className="expiration-label">EXP. DATE (MM/YY)</label>
-          <input name="monthExpiration" type="text" maxLength="2" placeholder="MM" onChange={(e) => {
+          <label className="cvc-label">CVC</label>
+          <input className="month" name="monthExpiration" type="text" maxLength="2" placeholder="MM" onChange={(e) => {
           
-          updateInfo(e.target.name, e.target.value)
+            updateInfo(e.target.name, e.target.value)
         
           }}/>
-          <input name="yearExpiration" type="text" maxLength="2" placeholder="YY" onChange={(e) => {
+          <input className="year" name="yearExpiration" type="text" maxLength="2" placeholder="YY" onChange={(e) => {
           
-          updateInfo(e.target.name, e.target.value)
+            updateInfo(e.target.name, e.target.value)
         
           }}/>
           {dateErrorMessage}
-        </div>
-        <div className="cvc-container">
-          <label className="cvc-label">CVC</label>
-          <input name="cvc" type="text" maxLength="3" placeholder="e.g 123" onChange={(e) => {
+          <input className="cvc" name="cvc" type="text" maxLength="3" placeholder="e.g 123" onChange={(e) => {
           
-          updateInfo(e.target.name, e.target.value)
+            updateInfo(e.target.name, e.target.value)
         
           }}/>
           {cvcErrorMessage}

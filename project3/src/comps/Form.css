@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400&family=Roboto:wght@400;500;700&family=Source+Sans+Pro&family=Space+Grotesk:wght@500&display=swap');
+
 .form-container {
 
   width: 100%;
@@ -15,27 +17,58 @@
 
 }
 
-.date-container,
-.cvc-container {
+.date-cvc-container {
 
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   row-gap: .3rem;
 
 }
 
-.date-container {
+.month,
+.year {
 
-  column-gap: .5rem;
+  width: 18%;
+  padding-left: .5rem;
+
+}
+
+.cvc {
+
+  width: 58%;
+
+}
+
+.expiration-label {
+
+  width: 55%;
+
+}
+
+.cvc-label {
+
+  width: 45%;
 
 }
 
 input {
 
   width: 100%;
+  border-width: 2px;
   border-radius: 10px;
-  height: 38px;
+  height: 65px;
+  padding-left: 1rem;
+  font-size: 18px;
+  font-family: 'Space Grotesk', sans-serif;
+
+}
+
+.name:focus,
+.name:active {
+
+  outline-color: linear-gradient(hsl(249, 99%, 64%) to hsl(278, 94%, 30%));
 
 }
 
@@ -45,27 +78,18 @@ p {
 
 }
 
-.date-container input {
-
-  width: 40%;
-
-}
-
 .submit-button {
 
   width: 100%;
-  height: 50px;
+  height: 70px;
   margin-top: 1rem;
   border-radius: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  background-color:  hsl(278, 68%, 11%);
+  color: white;
 
 }
-
-/* .cvc-label,
-.expiration-label {
-
-  width: 40%;
-
-} */
 
 @media (min-width: 376px) {
 
@@ -81,16 +105,63 @@ p {
 
     width: 50%;
     height: 50%;
+    display: block;
     position: absolute;
-    top: 19%;
+    top: 29%;
     right: 17%;
-    align-items: flex-end;
+    align-items: center;
 
   }
 
   label {
 
-    display: inline-block;
+    display: block;
+    margin-bottom: .8rem;
+
+  }
+
+  input {
+
+    margin-bottom: 2.5rem;
+
+
+  }
+
+  .expiration-label {
+
+    width: 47%;
+
+  }
+
+  .cvc-label {
+
+    width: 53%;
+
+  }
+
+  .month {
+
+    width: 20%;
+    margin-right: 1rem;
+
+  }
+
+  .year {
+
+    width: 20%;
+    margin-right: 2rem;
+
+  }
+
+  .cvc {
+
+    width: 52.5%;
+
+  }
+
+  .date-cvc-container {
+
+    justify-content: flex-start;
 
   }
 

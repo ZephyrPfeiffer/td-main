@@ -18,6 +18,8 @@
   position: absolute;
   top: 36%;
   right: 13%;
+  font-size: 30px;
+  color: white;
 
 }
 
@@ -32,6 +34,14 @@
     left: 70%;
     background-size: contain;
 
+  }
+
+  .cvc-info {
+
+    position: absolute;
+    top: 42%;
+    right: 13%;
+  
   }
 
 }

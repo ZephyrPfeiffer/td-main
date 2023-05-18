@@ -7,11 +7,11 @@ import { useState } from 'react'
 
 const initialFormState = {
 
-  name: '',
-  cardNumber: '',
-  monthExpiration: '',
-  yearExpiration: '',
-  cvc: '',
+  name: 'Jane',
+  cardNumber: '0000 0000 0000 0000',
+  monthExpiration: '00',
+  yearExpiration: '00',
+  cvc: '000',
 
 };
 
