@@ -4,14 +4,14 @@ import Form from './Form';
 import ThankYou from './ThankYou';
 
 
-function MainContainer({formInfo, updateInfo, isComplete}) {
+function MainContainer({formInfo, isComplete, updateCompleteStatus, updateInfo, validateForm, validationInfo}) {
 
   let currentDisplay;
 
   if(isComplete) {
     currentDisplay = <ThankYou />
   }else {
-    currentDisplay = <Form  updateInfo={updateInfo}/>
+    currentDisplay = <Form isComplete={isComplete} updateCompleteStatus={updateCompleteStatus} updateInfo={updateInfo} validateForm={validateForm} validationInfo={validationInfo} />
   }
 
   return (

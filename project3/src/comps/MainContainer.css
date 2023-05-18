@@ -3,3 +3,13 @@
   width: 100%;
 
 }
+
+@media (min-width: 376px) {
+
+  .main-container {
+
+    display: flex;
+
+  }
+
+}

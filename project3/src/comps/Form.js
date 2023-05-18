@@ -1,10 +1,90 @@
 import './Form.css';
+import Input from 'react-input-auto-format';
 
-function Form({updateInfo}) {
 
-  function formSubmit(event) {
+function Form({isComplete, updateCompleteStatus, updateInfo, validateForm, validationInfo}) {
+
+  let errorMessages = {
+
+    isEmptyError: 'Can\'t be blank',
+    hasLetterError: 'Wrong format, numbers only',
+
+  }
+
+  let nameErrorMessage;
+  let cardNumberErrorMessage;
+  let dateErrorMessage;
+  let cvcErrorMessage;
+
+  async function formSubmit(event) {
 
     event.preventDefault()
+    await validateForm()
+    console.log(validationInfo)
+
+    for(let property in validationInfo) {
+
+      if(validationInfo[property]) {
+        updateCompleteStatus(false)
+        break;
+      }
+
+    }
+
+    if(!isComplete) {
+      if(validationInfo.nameEmpty) {
+
+        nameErrorMessage = <p>{errorMessages.isEmptyError}</p>
+
+      }else {
+
+        nameErrorMessage = null;
+
+      }
+
+      if(validationInfo.cardNumberEmpty) {
+
+        cardNumberErrorMessage = <p>{errorMessages.isEmptyError}</p>
+
+      }else if(validationInfo.cardNumberLetters) {
+
+        cardNumberErrorMessage = <p>{errorMessages.hasLetterError}</p>
+
+      }else {
+
+        cardNumberErrorMessage = null;
+
+      }
+
+      if(validationInfo.monthEmpty || validationInfo.yearEmpty) {
+
+        dateErrorMessage = <p>{errorMessages.isEmptyError}</p>
+
+      }else if(validationInfo.monthLetters || validationInfo.yearLetters) {
+
+        dateErrorMessage = <p>{errorMessages.hasLetterError}</p>
+
+      }else {
+
+        dateErrorMessage = null;
+
+      }
+
+      if(validationInfo.cvcEmpty) {
+
+        cvcErrorMessage = <p>{errorMessages.isEmptyError}</p>
+
+      }else if(validationInfo.cvcLetters) {
+
+        cvcErrorMessage = <p>{errorMessages.hasLetterError}</p>
+
+      }else {
+
+        cvcErrorMessage = null;
+
+      }
+
+    }
 
   }
 
@@ -20,14 +100,14 @@ function Form({updateInfo}) {
           updateInfo(e.target.name, e.target.value)
         
         }}/>
-        <p>Can't be blank</p>
+        {nameErrorMessage}
         <label>CARD NUMBER</label>
-        <input name="cardNumber" type="text" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxLength="19" placeholder="e.g. 1234 5678 9123 0000" onChange={(e) => {
+        <Input name="cardNumber" type="text" maxLength="19" format="#### #### #### ####" placeholder="e.g. 1234 5678 9123 0000" onChange={(e) => {
           
           updateInfo(e.target.name, e.target.value)
         
         }}/>
-        <p>Wrong Numbers</p>
+        {cardNumberErrorMessage}
         <div className="date-container">
           <label className="expiration-label">EXP. DATE (MM/YY)</label>
           <input name="monthExpiration" type="text" maxLength="2" placeholder="MM" onChange={(e) => {
@@ -40,7 +120,7 @@ function Form({updateInfo}) {
           updateInfo(e.target.name, e.target.value)
         
           }}/>
-          <p>Can't be blank</p>
+          {dateErrorMessage}
         </div>
         <div className="cvc-container">
           <label className="cvc-label">CVC</label>
@@ -49,7 +129,7 @@ function Form({updateInfo}) {
           updateInfo(e.target.name, e.target.value)
         
           }}/>
-          <p>Can't be blank</p>
+          {cvcErrorMessage}
         </div>
 
         <button className="submit-button" onClick={formSubmit}>Confirm</button>
